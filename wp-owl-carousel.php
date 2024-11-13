@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name: WP Owl Carousel
- * Description: This is a plugin to integrate Owl Carousel 2.3.4 into your WordPress site. Sample shortcode <code>[owl-carousel class=".custom-class" loop="true" margin="10" autoplay="false" autoplay_timeout="5000" autoplay_hover_pause="true" nav="true" mouse_drag="true" touch_drag="true" slide_by="1" lazy_load="false" screen_smallest="1" screen_small="2" screen_medium="3" screen_large="4" screen_largest="5"]</code>
- * Version: 1.0
- * Author: carterfromsl
+ * Description: This is a plugin to integrate Owl Carousel 2.3.4 into your WordPress site. Sample shortcode <code>[owl-carousel class="custom-class" loop="true" margin="10" autoplay="false" autoplay_timeout="5000" autoplay_hover_pause="true" nav="true" mouse_drag="true" touch_drag="true" slide_by="1" lazy_load="false" screen_smallest="1" screen_small="2" screen_medium="3" screen_large="4" screen_largest="5"]</code>
+ * Version: 1.0.1
+ * Author: StratLab Marketing
  * Author URI: https://strategylab.ca
  *
  * Owl Carousel 2.3.4 is originally authored by David Deutsch (https://owlcarousel2.github.io/OwlCarousel2/)
