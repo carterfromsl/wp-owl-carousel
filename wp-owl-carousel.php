@@ -1,15 +1,38 @@
 <?php
 /**
  * Plugin Name: WP Owl Carousel
+ * Plugin URI: https://github.com/carterfromsl/wp-owl-carousel/
  * Description: This is a plugin to integrate Owl Carousel 2.3.4 into your WordPress site. Sample shortcode <code>[owl-carousel class="custom-class" loop="true" margin="10" autoplay="false" autoplay_timeout="5000" autoplay_hover_pause="true" nav="true" mouse_drag="true" touch_drag="true" slide_by="1" lazy_load="false" screen_smallest="1" screen_small="2" screen_medium="3" screen_large="4" screen_largest="5"]</code>
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: StratLab Marketing
  * Author URI: https://strategylab.ca
- *
+ * Text Domain: wp-owl-carousel
+ * Requires at least: 6.0
+ * Requires PHP: 7.0
+ * Update URI: https://github.com/carterfromsl/wp-owl-carousel/
  * Owl Carousel 2.3.4 is originally authored by David Deutsch (https://owlcarousel2.github.io/OwlCarousel2/)
  */
 
- function enqueue_owlcarousel_files() {
+// Connect with the StratLab Auto-Updater for plugin updates
+add_action('plugins_loaded', function() {
+    if (class_exists('StratLabUpdater')) {
+        $plugin_file = __FILE__;
+        $plugin_data = get_plugin_data($plugin_file);
+
+        do_action('stratlab_register_plugin', [
+            'slug' => plugin_basename($plugin_file),
+            'repo_url' => 'https://api.github.com/repos/carterfromsl/wp-owl-carousel/releases/latest',
+            'version' => $plugin_data['Version'], 
+            'name' => $plugin_data['Name'],
+            'author' => $plugin_data['Author'],
+            'homepage' => $plugin_data['PluginURI'],
+            'description' => $plugin_data['Description'],
+            'access_token' => '', // Add if needed for private repo
+        ]);
+    }
+});
+
+function enqueue_owlcarousel_files() {
   if (!is_admin()) {
     global $post;
     if (is_a($post, 'WP_Post') && has_shortcode($post->post_content, 'owl-carousel')) {
@@ -71,4 +94,5 @@ function owl_carousel_shortcode($atts) {
   return $owl_carousel_script;
 }
 add_shortcode('owl-carousel', 'owl_carousel_shortcode');
+
 ?>
