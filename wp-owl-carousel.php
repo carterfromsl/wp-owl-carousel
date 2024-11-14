@@ -3,7 +3,7 @@
  * Plugin Name: WP Owl Carousel
  * Plugin URI: https://github.com/carterfromsl/wp-owl-carousel/
  * Description: This is a plugin to integrate Owl Carousel 2.3.4 into your WordPress site. Sample shortcode <code>[owl-carousel class="custom-class" loop="true" margin="10" autoplay="false" autoplay_timeout="5000" autoplay_hover_pause="true" nav="true" mouse_drag="true" touch_drag="true" slide_by="1" lazy_load="false" screen_smallest="1" screen_small="2" screen_medium="3" screen_large="4" screen_largest="5"]</code>
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author: StratLab Marketing
  * Author URI: https://strategylab.ca
  * Text Domain: wp-owl-carousel
@@ -16,6 +16,10 @@
 // Connect with the StratLab Auto-Updater for plugin updates
 add_action('plugins_loaded', function() {
     if (class_exists('StratLabUpdater')) {
+        if (!function_exists('get_plugin_data')) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+        
         $plugin_file = __FILE__;
         $plugin_data = get_plugin_data($plugin_file);
 
